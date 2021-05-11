@@ -7,7 +7,10 @@ plugins {
    id 'java-library'
 }
 
-version = '1.0'
+sourceCompatibility = JavaVersion.VERSION_1_8   //these two lines
+targetCompatibility = JavaVersion.VERSION_1_8   //are the only ones that matter
+
+version = '1.1'
 
 task fatJar(type: Jar) {
 	manifest {
@@ -28,8 +31,10 @@ dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
     
-    compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.5.1'
-    compile "nginx-clojure:nginx-clojure:0.4.5"
+    compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.16.0'
+ 	compile 'nginx-clojure:nginx-clojure:0.5.2'
+ 	compile 'org.apache.xmlgraphics:batik-bridge:1.14'
+ 	compile 'net.sf.jasperreports:jasperreports-fonts:6.16.0'
 }
 
 
@@ -37,8 +42,12 @@ dependencies {
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    
     maven {
-    	url 'http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/'
+    	url 'http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts'
     }
+    maven {
+   		url 'http://clojars.org/repo'
+    }
+    jcenter()
 }
