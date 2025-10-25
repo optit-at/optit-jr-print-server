@@ -51,16 +51,12 @@ public class JRPrintHandler implements NginxJavaRingHandler {
 			sides = (Sides) Sides.class.getDeclaredField(sidesString).get(null);
 			mediaSizeName = (MediaSizeName) MediaSizeName.class.getDeclaredField(mediaSizeNameString).get(null);
 		} catch (IllegalArgumentException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IllegalAccessException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (NoSuchFieldException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (SecurityException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		if (sides == null) {

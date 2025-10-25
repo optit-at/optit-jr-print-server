@@ -9,13 +9,14 @@ task fatJar(type: Jar) {
         attributes 'Implementation-Title': 'Optit JR Print', 'Implementation-Version': version
     }
     archiveBaseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
 
 task copyToLib(type: Copy) {
     into "$buildDir/output/lib"
-    from configurations.implementation
+    from configurations.runtimeClasspath
 }
 
 dependencies {    
